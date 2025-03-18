@@ -1,62 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Physics Ball Simulation</title>
-    <!-- Link to external CSS file -->
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Developer Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-
-    <!-- Main Container for the Simulation -->
-    <header>
-        <h1>Interactive Physics Simulation</h1>
-    </header>
-
-    <!-- Canvas Container -->
-    <div id="canvas-container">
-        <!-- This is where the simulation (ball) will be rendered -->
-        <canvas id="simulationCanvas"></canvas>
+  <header>
+    <h1>Welcome to My Portfolio</h1>
+    <p>Interactive WebGL Demos and Physics Simulations</p>
+  </header>
+  
+  <section class="webgl-demo">
+    <h2>WebGL Game</h2>
+    <iframe src="your-webgl-game.html" title="WebGL Game" class="webgl-iframe"></iframe>
+  </section>
+  
+  <section class="physics-simulation">
+    <h2>Interactive Physics Simulation</h2>
+    <canvas id="physicsCanvas"></canvas>
+    <div class="controls">
+      <label for="force">Force: <input type="range" id="force" min="0" max="10" step="0.1"></label>
+      <label for="mass">Mass: <input type="range" id="mass" min="1" max="50" step="1"></label>
+      <label for="gravity">Gravity: <input type="range" id="gravity" min="0" max="20" step="0.5"></label>
     </div>
-
-    <!-- Controls Section: Where user can interact with sliders and buttons -->
-    <section class="controls">
-        <h2>Control the Ball</h2>
-
-        <!-- Rest height slider -->
-        <label for="restHeight">Rest Height</label>
-        <input type="range" id="restHeight" min="50" max="300" step="1" value="150">
-        <p class="value" id="restHeightValue">150</p>
-
-        <!-- Spring stiffness slider -->
-        <label for="springStiffness">Spring Stiffness</label>
-        <input type="range" id="springStiffness" min="0" max="500" step="10" value="100">
-        <p class="value" id="springStiffnessValue">100</p>
-
-        <!-- Damping coefficient slider -->
-        <label for="dampingCoefficient">Damping Coefficient</label>
-        <input type="range" id="dampingCoefficient" min="0" max="50" step="1" value="10">
-        <p class="value" id="dampingCoefficientValue">10</p>
-
-        <!-- Impulse force vector input -->
-        <label for="impulseForce">Impulse Force (Vector2)</label>
-        <input type="text" id="impulseForce" placeholder="x, y">
-        <button id="applyImpulseButton">Apply Impulse Force</button>
-
-        <!-- Velocity information -->
-        <div class="velocity-info">
-            <h3>Velocity</h3>
-            <p id="velocityInfo">0, 0</p>
-        </div>
-    </section>
-
-    <!-- JavaScript to Handle Physics and User Interactions -->
-    <script src="simulation.js"></script>
-
+  </section>
+  
+  <script src="script.js"></script>
 </body>
-
 </html>
