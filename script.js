@@ -12,7 +12,12 @@ let ball = {
   color: 'skyblue',
   force: 0,
   mass: 10,
-  gravity: 9.8,
+  gravity: -9.8,
+  k: 100,
+  d: 10,
+  rest: 40,
+  hit: 0,
+  compressed: 0,
 };
 
 function drawBall() {
@@ -25,21 +30,15 @@ function drawBall() {
 }
 
 function updateBall() {
-  ball.vy += (ball.gravity - ball.force / ball.mass) * 0.1; // Vertical acceleration
+if(ball.y - ball.rest < 0){
+  ball.compressed = abs(0 - ball.y - ball.rest);
+  spring = ball.k*ball.compressed
+  damper = ball.d * ball.y;
+  ball.force = spring - damper;
+  ball.vy += (ball.gravity + ball.force / ball.mass)*.1;
   ball.y += ball.vy;
-
-  ball.x += ball.vx; // Horizontal movement
-
-  // Bounce back if it hits the canvas edges
-  if (ball.y + ball.radius > canvas.height) {
-    ball.y = canvas.height - ball.radius;
-    ball.vy *= -0.8;
-  }
-
-  if (ball.x - ball.radius < 0 || ball.x + ball.radius > canvas.width) {
-    ball.x = ball.x - ball.radius < 0 ? ball.radius : canvas.width - ball.radius;
-    ball.vx *= -0.8;
-  }
+}
+  
 }
 
 // Update slider values dynamically
