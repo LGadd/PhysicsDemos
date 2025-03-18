@@ -38,7 +38,7 @@ class Ball {
     // Method to update the position of the ball based on velocity and apply spring force
     update() {
         // Simple gravity force (you can replace with custom forces later)
-        const gravity = 0.2;
+        const gravity = 9.81;
         const springForce = -this.springStiffness * (this.y - this.restHeight); // Spring force (Hooke's Law)
         const dampingForce = -this.dampingCoefficient * this.velocity; // Damping force
 
@@ -53,7 +53,7 @@ class Ball {
         // Prevent the ball from falling below the ground
         if (this.y + this.radius >= canvas.height) {
             this.y = canvas.height - this.radius; // Stop at the bottom
-            this.velocity = 0; // Reset velocity on ground contact
+            this.velocity = -this.velocity/2; // Reset velocity on ground contact
         }
     }
 }
